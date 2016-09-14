@@ -9,25 +9,13 @@ var guessNumber = function(guess) {
     guess: guess
   };
 };
-var GENERATE_RANDOM_NUMBER = 'GENERATE_RANDOM_NUMBER';
-var generateRandomNumber = function(randomNumber) {
+var RANDOM_NUMBER = 'RANDOM_NUMBER';
+var randomNumber = function() {
   return {
-    type: GENERATE_RANDOM_NUMBER,
-    randomNumber: randomNumber
+    type: RANDOM_NUMBER
   };
 };
-var HOTORCOLD = 'HOTORCOLD';
-var hotOrCold = function(randomNumber, guess) {
-  return {
-    type: HOTORCOLD,
-    randomNumber: randomNumber,
-    guess: guess
-  };
-};
-var GUESSCOUNT = 'GUESSCOUNT';
-var guestCount = function(count) {
-  return {
-    type: GUESSCOUNT,
-    count: count
-  };
-};
+exports.GUESS_NUMBER = GUESS_NUMBER;
+exports.guessNumber = guessNumber;
+exports.RANDOM_NUMBER = RANDOM_NUMBER;
+exports.randomNumber = randomNumber;
