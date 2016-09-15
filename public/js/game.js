@@ -31,4 +31,10 @@ var Game = React.createClass({
         );
     }
 });
-module.exports = Game;
+var mapStateToProps = function(state, props) {
+  return {
+    gameState: state
+  };
+};
+var Container = connect(mapStateToProps)(Game);
+module.exports = Container;
