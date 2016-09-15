@@ -1,5 +1,6 @@
 var React = require('react');
-
+var router = require('react-router');
+var Link = router.Link;
 var InfoBox = function(props) {
   return (
     <div className="overlay" id="modal">
@@ -13,7 +14,7 @@ var InfoBox = function(props) {
 							<li>3. You will <strong>get feedback</strong> on how close ("hot") or far ("cold") your guess is.</li>
 						</ul>
 						<p>So, Are you ready?</p>
-						<Link className="close" onClick="props.closeHandler.closeWhat">Got It!</Link>
+						<Link className="close" onClick={props.closeHandler}>Got It!</Link>
 					</div>
 				</div>
 			</div>
