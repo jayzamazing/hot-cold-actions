@@ -43,6 +43,14 @@ var Game = React.createClass({
       document.getElementById('userGuess').value = '';
     },
     render: function() {
+        var size = this.props.guesses.length;
+        var guesses = this.props.guesses.map(function(item, index) {
+          if (size > 1 && size !== index + 1) {
+            return item + ', ';
+          } else {
+            return item;
+          }
+        });
         return (
             <section>
               <header>
@@ -57,7 +65,7 @@ var Game = React.createClass({
                         <input type="submit" id="guessButton" className="button" name="submit" value="Guess"/>
                     </form>
                     <p>Guess #<span id="count">{this.props.guesses.length}</span>!</p>
-                    <ul id="guessList" className="guessBox clearfix"></ul>
+                    <ul id="guessList" className="guessBox clearfix">{guesses}</ul>
                 </section>
             </section>
         );
