@@ -25,7 +25,7 @@ var Game = React.createClass({
                 <InfoBox closeHandler={this.closeWhat} />
               </header>
                 <section className="game">
-                    <h2 id="feedback">Make your Guess!</h2>
+                    <h2 id="feedback">{this.props.hotOrCold || 'Make your Guess!'}</h2>
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" name="userGuess" id="userGuess" className="text" maxLength="3" autoComplete="off" placeholder="Enter your Guess" required/>
                         <input type="submit" id="guessButton" className="button" name="submit" value="Guess"/>
