@@ -35,8 +35,12 @@ var Game = React.createClass({
         isHidden: true
       });
     },
+    //function that deals with clearing state
     newGame: function() {
-      console.log('working');
+      //clear store data
+      this.props.dispatch(actions.newGame());
+      //clear input field
+      document.getElementById('userGuess').value = '';
     },
     render: function() {
         return (

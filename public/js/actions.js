@@ -15,7 +15,15 @@ var randomNumber = function() {
     type: RANDOM_NUMBER
   };
 };
+var NEW_GAME = 'NEW_GAME';
+var newGame = function() {
+  return {
+    type: NEW_GAME
+  };
+};
 exports.GUESS_NUMBER = GUESS_NUMBER;
 exports.guessNumber = guessNumber;
 exports.RANDOM_NUMBER = RANDOM_NUMBER;
 exports.randomNumber = randomNumber;
+exports.NEW_GAME = NEW_GAME;
+exports.newGame = newGame;

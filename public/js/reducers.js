@@ -35,6 +35,10 @@ function gameReducer(state, action) {
     return state;
   } else if (action.type === actions.RANDOM_NUMBER) {
     return Object.assign({}, state, {randomNumber: Math.floor((Math.random() * 100) + 1)});
+  } else if (action.type === actions.NEW_GAME) {
+    return Object.assign(
+      {}, {guesses: []}, {hotOrCold: ''}, {randomNumber: null}
+    );
   }
 }
 exports.gameReducer = gameReducer;
