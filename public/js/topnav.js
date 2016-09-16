@@ -1,12 +1,10 @@
 var React = require('react');
-var router = require('react-router');
-var Link = router.Link;
 var TopNav = function(props) {
   return (
     <nav>
 				<ul className="clearfix">
-					<li><Link className="what" onClick={props.newGameHandler}>What ?</Link></li>
-					<li><Link className="new" onClick={props.whatPopUpHandler}>+ New Game</Link></li>
+					<li><a className="what" onClick={props.whatPopUpHandler}>What ?</a></li>
+					<li><a className="new" onClick={props.newGameHandler}>+ New Game</a></li>
 				</ul>
 		</nav>
   );

@@ -143,7 +143,6 @@ h1 {
 	left: 0;
 	margin: 0;
 	z-index: 1000;
-	display: none;
 }
 
 .content {
@@ -364,4 +363,21 @@ ul.guessBox li {
 	width: 95%;
 	margin: 0.2em;
 	color: #fff;
+}
+
+.whatInfoModal-enter {
+	opacity: 0;
+}
+.whatInfoModal-enter.whatInfoModal-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.whatInfoModal-leave {
+  opacity: 1;
+}
+
+.whatInfoModal-leave.whatInfoModal-leave-active {
+  opacity: 0;
+  transition: opacity 1s;
 }

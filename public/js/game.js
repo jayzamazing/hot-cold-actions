@@ -5,24 +5,46 @@ var InfoBox = require('./infobox');
 var actions = require('./actions');
 
 var Game = React.createClass({
+    getInitialState: function() {
+      return {
+        isHidden: true
+      };
+    },
     //called after component renders for first time
     componentDidMount: function() {
       //generate randomNumber
       this.props.dispatch(actions.randomNumber());
     },
+    //handle submission of the form
     handleSubmit: function(e) {
       e.preventDefault();
-      this.props.dispatch(actions.guessNumber(e.target[0].value));
+      //get the value of the guess input field
+      var guess = e.target[0].value;
+      //ensure number is valid
+      if (guess <= 100 && guess >= 1) {
+        this.props.dispatch(actions.guessNumber(e.target[0].value));
+      }
     },
-    whatPopUp: function() {},
-    closeWhat: function() {},
-    newGame: function() {},
+    whatPopUp: function() {
+      this.setState({
+        isHidden: false
+      });
+    },
+    closeWhat: function() {
+      this.setState({
+        isHidden: true
+      });
+    },
+    newGame: function() {
+      console.log('working');
+    },
     render: function() {
         return (
             <section>
               <header>
                 <TopNav newGameHandler={this.newGame} whatPopUpHandler={this.whatPopUp} />
-                <InfoBox closeHandler={this.closeWhat} />
+                <InfoBox closeHandler={this.closeWhat} displayWhat={this.state.isHidden}/>
+                <h1>HOT or COLD</h1>
               </header>
                 <section className="game">
                     <h2 id="feedback">{this.props.hotOrCold || 'Make your Guess!'}</h2>
