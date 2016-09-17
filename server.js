@@ -16,9 +16,7 @@ app.get("/fewest-guesses", function(request, response) {
 });
 //function to add guess only if stored guess is less than the guess coming in
 app.post("/fewest-guesses", function(request, response) {
-    var storedGuess = {};
-    Fewest.findOne({}, function(err, guess) {
-        storedGuess = guess;
+    Fewest.findOne({}, function(err, storedGuess) {
         if (storedGuess && request.body.guess < storedGuess.guess) {
             Fewest.findOneAndUpdate({}, {
                     guess: request.body.guess
@@ -28,10 +26,10 @@ app.post("/fewest-guesses", function(request, response) {
                     setDefaultsOnInsert: true
                 },
                 function(err, guess) {
-                    response.status(201).json(guess);
+                    response.sendStatus(201);
                 });
         } else {
-            response.status(201).json(storedGuess);
+            response.sendStatus(201);
         }
     });
 
