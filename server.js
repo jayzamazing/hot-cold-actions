@@ -26,7 +26,7 @@ app.post("/fewest-guesses", function(request, response) {
                     setDefaultsOnInsert: true
                 },
                 function(err, guess) {
-                    response.sendStatus(201);
+                    response.status(201).json(guess);
                 });
         } else {
             response.sendStatus(201);
