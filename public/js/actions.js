@@ -31,7 +31,7 @@ var fewestGuesses = function(fewestGuestCount) {
 };
 var saveFewestGuesses = function() {
   return function(dispatch) {
-    var url = 'localhost:8080/fewest-guesses';
+    var url = 'http://localhost:8080/fewest-guesses';
     return fetch(url, {
       method: 'POST'
     }).then(function(response) {
@@ -53,7 +53,7 @@ var saveFewestGuesses = function() {
 };
 var fetchFewestGuesses = function() {
   return function(dispatch) {
-    var url = 'localhost:8080/fewest-guesses';
+    var url = 'http://localhost:8080/fewest-guesses';
     return fetch(url)
     .then(function(response) {
       if (response.status < 200 || response.status >= 300) {

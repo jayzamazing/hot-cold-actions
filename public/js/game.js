@@ -14,6 +14,7 @@ var Game = React.createClass({
     componentDidMount: function() {
       //generate randomNumber
       this.props.dispatch(actions.randomNumber());
+      this.props.dispatch(actions.fetchFewestGuesses());
     },
     //handle submission of the form
     handleSubmit: function(e) {
@@ -66,6 +67,7 @@ var Game = React.createClass({
                     </form>
                     <p>Guess #<span id="count">{this.props.guesses.length}</span>!</p>
                     <ul id="guessList" className="guessBox clearfix">{guesses}</ul>
+                    <p>Fewests Guesses #<span id="count">{this.props.fewestGuestCount || 'N/A'}</span>!</p>
                 </section>
             </section>
         );
@@ -74,7 +76,8 @@ var Game = React.createClass({
 var mapStateToProps = function(state, props) {
   return {
     guesses: state.guesses,
-    hotOrCold: state.hotOrCold
+    hotOrCold: state.hotOrCold,
+    fewestGuestCount: state.fewestGuestCount
   };
 };
 var Container = connect(mapStateToProps)(Game);
