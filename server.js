@@ -6,11 +6,18 @@ var Fewest = require('./fewest_guesses');
 var app = express();
 
 
-app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/build'));
 app.use(bodyParser.json());
+/*
+ * Function to set the first page to load
+ */
+app.get("/", function(request, response) {
+    response.sendFile(__dirname + '/index.html');
+});
 //function to get fewest-guesses
 app.get("/fewest-guesses", function(request, response) {
     Fewest.findOne({}, function(err, guess) {
+      console.log(guess);
         response.status(201).json(guess);
     });
 });

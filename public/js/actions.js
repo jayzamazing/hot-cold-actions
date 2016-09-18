@@ -46,7 +46,7 @@ var saveFewestGuesses = function() {
     })
     .then(function(data) {
       return dispatch(
-        fewestGuesses(data)
+        fewestGuesses(data.guess)
       );
     });
   }
@@ -61,13 +61,13 @@ var fetchFewestGuesses = function() {
                 error.response = response
                 throw error;
             }
-            return reponse;
+            return response;
     }).then(function(response) {
       return response.json();
     })
     .then(function(data) {
       return dispatch(
-        fewestGuesses(data)
+        fewestGuesses(data.guess)
       );
     });
   }

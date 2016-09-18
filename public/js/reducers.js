@@ -1,11 +1,5 @@
 var actions = require('./actions');
 
-var initialState = {
-  guesses: [],
-  hotOrCold: '',
-  randomNumber: null,
-  fewestGuestCount: null
-};
 function hotOrColdReducer(state, action) {
   var diff = Math.abs(state.randomNumber - action.guess);
       if (50 <= diff)
@@ -33,7 +27,7 @@ function gameReducer(state, action) {
     return Object.assign(
       {}, state, {guesses: state.guesses.concat(action.guess)}, {hotOrCold: hotOrColdReducer(state, action)}
     );
-    return state;
+
   } else if (action.type === actions.RANDOM_NUMBER) {
     return Object.assign({}, state, {randomNumber: Math.floor((Math.random() * 100) + 1)});
   } else if (action.type === actions.NEW_GAME) {
@@ -43,5 +37,6 @@ function gameReducer(state, action) {
   } else if (action.type === actions.FEWEST_GUESSES) {
     return Object.assign({}, state, {fewestGuestCount: action.fewestGuestCount});
   }
+  return state;
 }
 exports.gameReducer = gameReducer;
