@@ -43,6 +43,17 @@ var Game = React.createClass({
       //clear input field
       document.getElementById('userGuess').value = '';
     },
+    hotOrCold: function() {
+      var status = this.props.hotOrCold;
+      if (status && status.localeCompare('congratulations') === 0) {
+        this.props.dispatch(actions.saveFewestGuesses(this.props.guesses.length));
+        return status;
+      } else if (status) {
+        return status;
+      } else {
+        return 'Make your Guess!';
+      }
+    },
     render: function() {
         var size = this.props.guesses.length;
         var guesses = this.props.guesses.map(function(item, index) {
@@ -60,7 +71,7 @@ var Game = React.createClass({
                 <h1>HOT or COLD</h1>
               </header>
                 <section className="game">
-                    <h2 id="feedback">{this.props.hotOrCold || 'Make your Guess!'}</h2>
+                    <h2 id="feedback">{this.hotOrCold()}</h2>
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" name="userGuess" id="userGuess" className="text" maxLength="3" autoComplete="off" placeholder="Enter your Guess" required/>
                         <input type="submit" id="guessButton" className="button" name="submit" value="Guess"/>

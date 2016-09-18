@@ -17,7 +17,6 @@ app.get("/", function(request, response) {
 //function to get fewest-guesses
 app.get("/fewest-guesses", function(request, response) {
     Fewest.findOne({}, function(err, guess) {
-      console.log(guess);
         response.status(201).json(guess);
     });
 });

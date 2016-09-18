@@ -29,18 +29,25 @@ var fewestGuesses = function(fewestGuestCount) {
     fewestGuestCount: fewestGuestCount
   }
 };
-var saveFewestGuesses = function() {
+var saveFewestGuesses = function(guesses) {
   return function(dispatch) {
     var url = 'http://localhost:8080/fewest-guesses';
     return fetch(url, {
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        guess: guesses
+      })
     }).then(function(response) {
       if (response.status < 200 || response.status >= 300) {
                 var error = new Error(response.statusText)
                 error.response = response
                 throw error;
             }
-            return reponse;
+            return response;
     }).then(function(response) {
       return response.json();
     })
